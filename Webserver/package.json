@@ -1,0 +1,27 @@
+{
+  "name": "webserver",
+  "version": "1.0.0",
+  "description": "Webserver backend for hunt",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tylerlewis1/Scavengerhunt.git"
+  },
+  "author": "Tyler Lewis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tylerlewis1/Scavengerhunt/issues"
+  },
+  "homepage": "https://github.com/tylerlewis1/Scavengerhunt#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "http": "^0.0.1-security",
+    "https": "^1.0.0"
+  }
+}

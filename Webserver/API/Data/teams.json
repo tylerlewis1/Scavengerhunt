@@ -4,5 +4,11 @@
         "players" : ["player1", "player2"],
         "locfound" : [1, 2, 3],
         "teamid" : 1
+    },
+    {
+        "teamname" : "testteam2",
+        "players" : ["player3", "player4"],
+        "locfound" : [1, 2, 3],
+        "teamid" : 2
     }
 ]
