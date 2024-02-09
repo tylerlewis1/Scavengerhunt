@@ -1,0 +1,8 @@
+[
+    {
+        "teamname" : "testteam",
+        "players" : ["player1", "player2"],
+        "locfound" : [1, 2, 3],
+        "teamid" : 1
+    }
+]
