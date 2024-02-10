@@ -40,7 +40,7 @@ router.post("/", (req, res, next) =>{
      imagedata.push({
         teamname: req.body.teamname,
         teamid: (currentdata.length + 1),
-        teamphoto: req.body.teamphoto
+        images: []
      });
     // write data
     let stringjson = JSON.stringify(data, null, 2);
@@ -48,6 +48,7 @@ router.post("/", (req, res, next) =>{
     fs.writeFileSync("./API/Data/teams.json", stringjson);
     fs.writeFileSync("./API/Data/images.json", stringjson1);
     data = [];
+    imagedata = [];
     res.send("Done");
     res.status(200);
 });
