@@ -5,6 +5,7 @@ const getlocations = require('./API/getlocations');
 const getteams = require('./API/getteams');
 const addlocation = require('./API/addlocation');
 const gdbt = require('./API/getdatabyteam');
+const check = require('./API/checklocation');
 var rmteam = require('./API/rmteam');
 const addteam = require('./API/addteam');
 const update = require('./API/update');
@@ -20,4 +21,5 @@ app.use('/addlocation', addlocation);
 app.use('/addteam', addteam);
 app.use('/rmteam', rmteam);
 app.use('/gdbt', gdbt);
+app.use('/check', check)
 module.exports = app;
