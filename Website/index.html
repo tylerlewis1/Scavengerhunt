@@ -13,7 +13,7 @@
         <div class="content">
             <h1>2024 LAX Scavenger Hunt</h1>
             <select name="teams" id="teams"></select>
-            <button>Select</button>
+            <button onclick="play()">Select</button>
             <a href="maketeam.html"><button>Make team</button></a>
         
         <p style="bottom: 0px; position: absolute; color: white; text-align: left;">Tyler Lewis 2024</p></div>
@@ -36,5 +36,9 @@
                 console.log(`Error: ${xhr.status}`);
             }
         };
+        function play(){
+            localStorage.setItem("teamid", document.getElementById("teams").value);
+            window.location.replace("./gamepage.html");
+        }
     </script>
 </html>

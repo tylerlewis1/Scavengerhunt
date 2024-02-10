@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>2024 Hunt Make Team</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+        <link rel="stylesheet" href="./css/all.css">
+        <link rel="stylesheet" href="./css/game.css">
+        <meta name="description" content="Find school">
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <nav id="nav">
+            <div id="logo"></div>
+            <div id="teamids"></div>
+        </nav>
+        <div class="locationsmain">
+            
+            <div id="locations">
+
+            </div>
+        </div>
+    </body>
+    <script>
+        teamid = localStorage.getItem("teamid");
+        logo = document.getElementById("logo");
+        names = document.getElementById("teamids");
+        locationsdiv = document.getElementById("locations");
+        locations = [];
+        console.log(teamid);
+        //getting locaitons
+        const locationrequest = new XMLHttpRequest();
+        locationrequest.open("GET", "http://192.168.5.97:25565/getlocations");
+        locationrequest.send();
+        locationrequest.responseType = "json";
+        locationrequest.onload = () => {
+            if (locationrequest.readyState == 4 && locationrequest.status == 200) {
+                locations = locationrequest.response;
+                getteaminfo();
+            } else {
+                console.log(`Error: ${locationrequest.status}`);
+            }
+        };
+        //getting team info
+        function getteaminfo(){
+            const xhr = new XMLHttpRequest();
+            has = false;
+            xhr.open("POST", "http://192.168.5.97:25565/gdbt");
+            xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+            xhr.send(JSON.stringify({
+                    "id": teamid
+                }));
+            xhr.responseType = "json";
+            xhr.onload = () => {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    console.log(xhr.response);
+                    logo.innerHTML = '<img src="'+ xhr.response.teamphoto +'">';
+                    names.innerHTML = '<h2>' + xhr.response.teamname + '</h2><h3>' + xhr.response.players + '</h3>';
+                    for(i = 0; i < locationrequest.response.length; i++){
+                        has = false;
+                        for(f = 0; f < xhr.response.locfound.length; f++){
+                            if(xhr.response.locfound[f] == locationrequest.response[i].id){
+                                has = true;
+                            }
+                        }
+                        if(has == false){
+                            id = locationrequest.response[i].id;
+                            locationsdiv.innerHTML = locationsdiv.innerHTML + '<div class="place" id="'+ locationrequest.response[i].id +'"><div><img src="' + locationrequest.response[i].pictureurl + '"></div><div><h3>' + locationrequest.response[i].name + '</h3><label for="addimage' + locationrequest.response[i].id + '" id="uploadbutton' + i + '" class="Upload">Upload Image of Location</label><input onchange="upload(' + locationrequest.response[i].id + ')" id="addimage' + locationrequest.response[i].id + '" type="file"/></div></div>';
+                        }         
+                    }
+                } else {
+                    console.log(`Error: ${xhr.status}`);
+                }
+            };
+        }
+        function upload(id){
+            const data = new FormData();
+            data.append("image", document.getElementById("addimage" + id).files[0]);
+                fetch("https://api.imgur.com/3/image/",{
+                    method: "post",
+                    headers:{
+                        Authorization: "Client-ID 6a27d573f603ad7"
+                    },
+                        body:data
+                    }
+                ).then(data=>data.json()).then(data => submit(data, id));
+                
+           
+        }
+        function submit(data, locid){
+            console.log(data.data.link);
+            const submitrequest = new XMLHttpRequest();
+            submitrequest.open("POST", "http://192.168.5.97:25565/check");
+            submitrequest.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
+            submitrequest.send(JSON.stringify({
+                "id": teamid,
+                "locid": locid,
+                "img": data.data.link
+            }));
+            submitrequest.responseType = "json";
+            submitrequest.onload = () => {
+                if (submitrequest.readyState == 4 && submitrequest.status == 200) {
+                    window.location.replace("gamepage.html");
+                } else {
+                    console.log(`Error: ${submitrequest.status}`);
+                }
+            };
+
+
+        }
+
+
+
+
+    </script>
+</html>

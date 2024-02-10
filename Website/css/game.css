@@ -1,0 +1,49 @@
+@import url('https://fonts.cdnfonts.com/css/big-john');
+*{
+  font-family: 'Big John', sans-serif;
+  
+}
+input{
+  display: none;
+}
+body{
+  background-color: white;
+}
+nav{
+  display: flex;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  flex-basis: 50%;
+  padding-top: 20px;
+}
+img{
+  position: relative;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 17vw;
+}
+nav, h2{
+  font-size: 7vw;
+}
+nav, h3{
+  font-size: 4vw;
+}
+
+.locationsmain{
+  width: 100%;
+  padding-top: 100px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+.place{
+  display: flex;
+  height: min-content;
+  margin-bottom: 20px;
+}
+
+
+
+
