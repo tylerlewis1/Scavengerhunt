@@ -23,13 +23,13 @@ router.post("/", (req, res, next) =>{
     data.push({
         name: req.body.name,
         pictureurl: req.body.url,
-        id: currentdata.length
+        id: (currentdata.length + 1)
      });
     // write data
     let stringjson = JSON.stringify(data, null, 2);
     fs.writeFileSync("./API/Data/locations.json", stringjson);
     data = [];
-    res.send("added location");
+    res.send("Done");
     res.status(200);
 });
 module.exports = router;
