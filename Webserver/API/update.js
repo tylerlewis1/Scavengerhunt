@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const teams = require('./Data/teams.json');
-const locations = require('./Data/locations.json');
-
 router.get("/", (req, res, next) =>{
+    teams = fs.readFileSync('./API/Data/teams.json');
+    locations = fs.readFileSync('./API/Data/locations.json');
+    teams = JSON.parse(teams);
+    locations = JSON.parse(locations);
     let senddata = {
         teams,
         locations
