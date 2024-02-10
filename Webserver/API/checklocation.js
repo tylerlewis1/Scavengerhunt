@@ -34,7 +34,7 @@ router.post("/", (req, res, next) =>{
                 locationsfound.push(currentdata[i].locfound[i1]);
             }
             for(i2 = 0; i2 < currentimagedata[i].images.length; i2++){
-                imagesdata.push(currentimagedata.images[i2]);
+                imagesdata.push(currentimagedata[i].images[i2]);
             }
             i
             locationsfound.push(req.body.locid);
