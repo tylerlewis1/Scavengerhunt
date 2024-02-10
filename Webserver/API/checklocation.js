@@ -60,6 +60,8 @@ router.post("/", (req, res, next) =>{
     fs.writeFileSync("./API/Data/images.json", stringjson1);
     data = [];
     imagedata = [];
+    imagesdata = [];
+    locationsfound = [];
     res.send("Done");
     res.status(200);
 });
