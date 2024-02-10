@@ -1,8 +1,11 @@
 const express = require('express');
+const fs = require('fs');
 const router = express.Router();
-const locations = require('./Data/locations.json');
+let locations = null;
 router.get("/", (req, res, next) =>{
-    res.send(locations);
+    locations = fs.readFileSync('./API/Data/locations.json');
+    res.send(JSON.parse(locations));
+    locations = null;
     res.status(200);
 });
 
