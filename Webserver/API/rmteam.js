@@ -22,7 +22,7 @@ router.post("/", (req, res, next) =>{
                 teamid: currentdata[i].teamid,
                 teamphoto: currentdata[i].teamphoto
             });
-            iamgedata.push({
+            imagedata.push({
                 teamname: currentdata[i].teamname,
                 teamid: currentdata[i].teamid,
                 images: currentimagedata[i].images
