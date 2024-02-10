@@ -28,17 +28,23 @@ router.post("/", (req, res, next) =>{
                 images: currentimagedata[i].images
             });
         } else{
+            locationsfound = [];
+            locationsfound.push(currentdata[i].locfound);
+            locationsfound.push(req.body.locid);
+            imagesdata = [];
+            imagesdata.push(currentdata[i].images);
+            imagesdata.push(req.body.img);
             data.push({
                 teamname: currentdata[i].teamname,
                 players: currentdata[i].players,
-                locfound: currentdata[i].locfound + req.body.locid,
+                locfound: locationsfound,
                 teamid: currentdata[i].teamid,
                 teamphoto: currentdata[i].teamphoto
             });
             imagedata.push({
                 teamname: currentdata[i].teamname,
                 teamid: currentdata[i].teamid,
-                images: currentimagedata[i].images + req.body.img
+                images: imagesdata
             });
         }
     }
