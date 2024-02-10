@@ -23,7 +23,7 @@ router.post("/", (req, res, next) =>{
     data.push({
         name: req.body.name,
         pictureurl: req.body.url,
-        id: (currentdata.length + 1)
+        id: Math.floor(Math.random() * 100000)
      });
     // write data
     let stringjson = JSON.stringify(data, null, 2);

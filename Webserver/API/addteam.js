@@ -34,7 +34,7 @@ router.post("/", (req, res, next) =>{
         teamname: req.body.teamname,
         players: req.body.players,
         locfound: [],
-        teamid: (currentdata.length + 1),
+        teamid: Math.floor(Math.random() * 100000),
         teamphoto: req.body.teamphoto
      });
      imagedata.push({
