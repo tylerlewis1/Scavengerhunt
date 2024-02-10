@@ -33,7 +33,7 @@ router.post("/", (req, res, next) =>{
             for(i1 = 0; i1 < currentdata[i].locfound.length; i1++){
                 locationsfound.push(currentdata[i].locfound[i1]);
             }
-            for(i2 = 0; i2 < currentdata[i].images.length; i2++){
+            for(i2 = 0; i2 < currentimagedata[i].images.length; i2++){
                 imagesdata.push(currentimagedata.images[i2]);
             }
             i
