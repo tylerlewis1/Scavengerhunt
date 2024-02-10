@@ -28,9 +28,11 @@ router.post("/", (req, res, next) =>{
                 images: currentimagedata[i].images
             });
         } else{
-            locationsfound = (currentdata[i].locfound);
+            for(i1 = 0; i1 < currentdata[i].locfound.length; i1++){
+                locationsfound.push(currentdata[i].locfound[i1]);
+                imagedata.push(currentimagedata.images[i1]);
+            }
             locationsfound.push(req.body.locid);
-            imagesdata = (currentdata[i].images);
             imagesdata.push(req.body.img);
             data.push({
                 teamname: currentdata[i].teamname,
