@@ -2,7 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const router = express.Router();
 // let teams = null;
-router.get("/", (req, res, next) =>{
+router.post("/", (req, res, next) =>{
     console.log(req.body);
     teams = fs.readFileSync('./API/Data/teams.json');
     for(i = 0; i < (JSON.parse(teams).length); i++){
