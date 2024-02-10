@@ -12,26 +12,29 @@
         <video id="bgvid" src="./assets/bgvid.mp4" muted autoplay loop></video>
         <div class="content">
             <h1>2024 LAX Scavenger Hunt</h1>
-            <select name="teams" id="teams">
-            </select>
+            <select name="teams" id="teams"></select>
+            <button>Select</button>
+            <a href="maketeam.html"><button>Make team</button></a>
         </div>
+        <footer style="background-color: black;">
+            <p style="color: white; text-align: center;">Tyler Lewis 2024</p>
+        </footer>
     </body>
+    
     <script>
         const dropdown = document.getElementById('teams');
         const xhr = new XMLHttpRequest();
-        xhr.open("GET", "http://localhost:25565/getteams");
+        xhr.open("GET", "http://192.168.5.97:25565/getteams");
         xhr.send();
         xhr.responseType = "json";
         xhr.onload = () => {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            for(i = 0; i < xhr.response.length; i++){
-                
-                dropdown.innerHTML = dropdown.innerHTML + '<option value="' + xhr.response[i].teamid +'">' + xhr.response[i].teamname + '</option>';
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                for(i = 0; i < xhr.response.length; i++){
+                    dropdown.innerHTML = dropdown.innerHTML + '<option class="team" value="' + xhr.response[i].teamid +'">' + xhr.response[i].teamname + '</option>';
+                }
+            } else {
+                console.log(`Error: ${xhr.status}`);
             }
-          
-        } else {
-            console.log(`Error: ${xhr.status}`);
-        }
-};
+        };
     </script>
 </html>

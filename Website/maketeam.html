@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>2024 Hunt Make Team</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+        <link rel="stylesheet" href="./css/maketeam.css">
+        <link rel="stylesheet" href="./css/all.css">
+        <meta name="description" content="Find school">
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <video id="bgvid" src="./assets/bgvid.mp4" muted autoplay loop></video>
+        <div class="content">
+            <div class="form">
+                <h1>Create Team</h1>
+                <div class="inputs">
+                    <div class="lables">
+                        <br>
+                        <label>Team name</label>
+                        <br>
+                        <br>
+                        <label>Players</label>
+                    </div>
+                    <div class="textboxes">
+                        <input type="text" id="name">
+                        <br>
+                        <br>
+                        <input type="text" id="players">
+                    </div>
+                    
+                </div>
+                <label for="image" id="uploadbutton" class="Upload"> Upload A Team Image</label>
+                <input id="image" type="file"/>
+                <button onclick="makeTeam()">Create</button>
+                <a href="index.html"><button>Back to main page</button></a>
+
+            </div>
+        </div>
+    </body>
+    <script>
+        image.addEventListener("change", ev=>{
+           document.getElementById("uploadbutton").innerText = "Uploading...";
+           const data = new FormData();
+           data.append("image", ev.target.files[0]);
+           fetch("https://api.imgur.com/3/image/",{
+               method: "post",
+               headers:{
+                   Authorization: "Client-ID 6a27d573f603ad7"
+               },
+               body:data
+           }
+           ).then(data=>data.json()).then(data=>imgerdata = data).then(data=>document.getElementById("uploadbutton").innerText = "Done!");
+       });
+       function makeTeam(){
+            var url = ("http://192.168.5.97:25565/addteam");
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", url);
+            xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
+            xhr.onload = function(){
+            console.log(xhr.responseText);
+            if(xhr.responseText == "Done"){
+                    alert("Added");
+                    window.location.replace("index.html");
+                }else{
+                    alert("Error");
+                }
+            }
+            xhr.send(JSON.stringify({
+                "teamname": document.getElementById("name").value,
+                "players": document.getElementById("players").value,
+                "teamphoto": imgerdata.data.link
+            }));
+       }
+    </script>
+</html>
