@@ -25,14 +25,14 @@ router.post("/", (req, res, next) =>{
         teamname: req.body.teamname,
         players: req.body.players,
         locfound: [],
-        teamid: currentdata.length,
+        teamid: (currentdata.length + 1),
         teamphoto: req.body.teamphoto
      });
     // write data
     let stringjson = JSON.stringify(data, null, 2);
     fs.writeFileSync("./API/Data/teams.json", stringjson);
     data = [];
-    res.send("team added");
+    res.send("Done");
     res.status(200);
 });
 module.exports = router;
