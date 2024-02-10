@@ -29,10 +29,10 @@ router.post("/", (req, res, next) =>{
             });
         } else{
             locationsfound = [];
-            imagedata = [];
+            imagesdata = [];
             for(i1 = 0; i1 < currentdata[i].locfound.length; i1++){
                 locationsfound.push(currentdata[i].locfound[i1]);
-                imagedata.push(currentimagedata.images[i1]);
+                imagesdata.push(currentimagedata.images[i1]);
             }
             locationsfound.push(req.body.locid);
             imagesdata.push(req.body.img);
