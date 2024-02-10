@@ -12,7 +12,7 @@ router.post("/", (req, res, next) =>{
     let currentdata = JSON.parse(datafile);
     //old data push
     for(i = 0; i < currentdata.length; i++){
-        if(res.body.id != currentdata[i].teamid) {
+        if(req.body.id != currentdata[i].teamid) {
             data.push({
                 teamname: currentdata[i].teamname,
                 players: currentdata[i].players,
