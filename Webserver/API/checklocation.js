@@ -31,14 +31,14 @@ router.post("/", (req, res, next) =>{
             data.push({
                 teamname: currentdata[i].teamname,
                 players: currentdata[i].players,
-                locfound: currentdata[i].locfound.push(req.body.locid),
+                locfound: currentdata[i].locfound + req.body.locid,
                 teamid: currentdata[i].teamid,
                 teamphoto: currentdata[i].teamphoto
             });
             imagedata.push({
                 teamname: currentdata[i].teamname,
                 teamid: currentdata[i].teamid,
-                images: currentimagedata[i].images.push(req.body.img)
+                images: currentimagedata[i].images + req.body.img
             });
         }
     }
