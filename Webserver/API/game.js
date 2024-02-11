@@ -15,7 +15,7 @@ router.post("/", (req, res, next) =>{
     //new data push
     data.push(req.body.id);
     //send game placment
-    res.send((gamedata.length + 1));
+    res.send(String(gamedata.length + 1));
     // write data
     let newgamedatastring = JSON.stringify(data, null, 2);
     fs.writeFileSync("./API/Data/game.json", newgamedatastring);
