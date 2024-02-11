@@ -9,7 +9,7 @@ const check = require('./API/checklocation');
 var rmteam = require('./API/rmteam');
 const addteam = require('./API/addteam');
 const update = require('./API/getimages');
-const getimg = require('./API/update');
+const getimg = require('./API/getimages');
 var bodyParser = require('body-parser');
 const app = express();
 app.use(cors());
