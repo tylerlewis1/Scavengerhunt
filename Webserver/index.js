@@ -1,5 +1,6 @@
 const http =  require('http');
 const https = require('https');
+const fs = require('fs');
 const router = require('./router');
 const config = require('./config.json');
 const port = config.port;
