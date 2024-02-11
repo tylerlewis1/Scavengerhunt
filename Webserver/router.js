@@ -8,7 +8,6 @@ const gdbt = require('./API/getdatabyteam');
 const check = require('./API/checklocation');
 var rmteam = require('./API/rmteam');
 const addteam = require('./API/addteam');
-const addteam = require('./API/addteam');
 const getimg = require('./API/getimages');
 var bodyParser = require('body-parser');
 const app = express();
