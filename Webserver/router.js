@@ -8,7 +8,8 @@ const gdbt = require('./API/getdatabyteam');
 const check = require('./API/checklocation');
 var rmteam = require('./API/rmteam');
 const addteam = require('./API/addteam');
-const update = require('./API/update');
+const addteam = require('./API/addteam');
+const getimg = require('./API/getimages');
 var bodyParser = require('body-parser');
 const app = express();
 app.use(cors());
@@ -21,5 +22,6 @@ app.use('/addlocation', addlocation);
 app.use('/addteam', addteam);
 app.use('/rmteam', rmteam);
 app.use('/gdbt', gdbt);
-app.use('/check', check)
+app.use('/check', check);
+app.use('/getimages', getimg);
 module.exports = app;
