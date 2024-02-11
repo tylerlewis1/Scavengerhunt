@@ -11,9 +11,15 @@ router.post("/", (req, res, next) =>{
     //old data push
     for(i = 0; i < gamedata.length; i++){
          data.push(gamedata[i]);
+         if(req.body.id == gamedata[i]){
+            res.send(String(gamedata.length));
+            res.status(200);
+            return;
+         }
     }
     //new data push
     data.push(req.body.id);
+    
     //send game placment
     res.send(String(gamedata.length + 1));
     // write data
