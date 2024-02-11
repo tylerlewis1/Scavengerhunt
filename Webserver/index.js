@@ -1,7 +1,10 @@
 const http =  require('http');
-// const https = require('https');
+const https = require('https');
 const router = require('./router');
 const config = require('./config.json');
 const port = config.port;
-const ws = http.createServer(router);
+var privateKey  = fs.readFileSync('./private.key', 'utf8');
+var certificate = fs.readFileSync('./certificate.crt', 'utf8');
+var credentials = {key: privateKey, cert: certificate};
+var ws = https.createServer(credentials, router);
 ws.listen(port);
