@@ -8,6 +8,7 @@ const gdbt = require('./API/getdatabyteam');
 const check = require('./API/checklocation');
 var rmteam = require('./API/rmteam');
 const addteam = require('./API/addteam');
+const game = require('./API/game');
 const update = require('./API/update');
 const getimg = require('./API/getimages');
 var bodyParser = require('body-parser');
@@ -24,4 +25,5 @@ app.use('/rmteam', rmteam);
 app.use('/gdbt', gdbt);
 app.use('/check', check);
 app.use('/getimages', getimg);
+app.use('/game', game)
 module.exports = app;
